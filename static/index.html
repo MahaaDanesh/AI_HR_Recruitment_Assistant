@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI HR Recruitment Assistant</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>AI HR Recruitment Assistant</h1>
+    <p>Agentic AI for resume screening, candidate matching and interview preparation</p>
+  </div>
+</header>
+
+<main>
+<section class="grid">
+  <div class="card">
+    <h2>Create Job</h2>
+    <form id="jobForm">
+      <input name="title" placeholder="Job title" required>
+      <textarea name="description" placeholder="Job description" required></textarea>
+      <input name="skills" placeholder="Required skills: Python, SQL, ML" required>
+      <input name="experience" placeholder="Experience: 0-2 years">
+      <button>Create Job</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Upload HR Knowledge</h2>
+    <p>Upload HR policies, interview guidelines or hiring documents for RAG.</p>
+    <input type="file" id="knowledgeFile" accept=".pdf,.docx,.txt">
+    <button onclick="uploadKnowledge()">Add to Knowledge Base</button>
+    <div id="knowledgeStatus"></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Screen Candidate</h2>
+  <select id="jobSelect"></select>
+  <input type="file" id="resume" accept=".pdf,.docx">
+  <button onclick="screen()">Analyze Resume</button>
+  <div id="result"></div>
+</section>
+
+<section class="card">
+  <h2>Interview Question Generator</h2>
+  <input id="ititle" placeholder="Job title">
+  <textarea id="idesc" placeholder="Job description"></textarea>
+  <textarea id="iresume" placeholder="Paste candidate resume text"></textarea>
+  <select id="difficulty"><option>easy</option><option selected>medium</option><option>hard</option></select>
+  <button onclick="interview()">Generate Questions</button>
+  <ol id="questions"></ol>
+</section>
+
+<section class="card">
+  <h2>HR Knowledge Assistant</h2>
+  <input id="question" placeholder="Ask about an uploaded HR policy...">
+  <button onclick="ask()">Ask AI</button>
+  <pre id="answer"></pre>
+</section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
